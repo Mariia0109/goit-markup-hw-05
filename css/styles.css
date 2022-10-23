@@ -159,7 +159,7 @@ header .container {
     display: inline-block;
     content: '';
     left: 0;
-    bottom: -2px;
+    bottom: 0;
     width: 100%;
     height: 4px;
     background: #2196F3;
@@ -245,30 +245,33 @@ header .container {
     width: 100%;
     height: 100%;
     opacity: 1;
-    transition: opacity 250ms var(--timing-function);
+    transition: opacity 250ms var(--timing-function), visibility 250ms var(--timing-function);
 }
 
 .backdrop.is-hidden {
     opacity: 0;
-    overflow: hidden;
+    visibility: hidden;
     pointer-events: none;
 }
 
 .backdrop.is-hidden .modal {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0.5);
 }
 
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+
+    transform: translate(-50%, -50%) scale(1);
     min-width: 528px;
     min-height: 581px;
-    background: var(--primary-bg-color);
+    background-color: var(--primary-bg-color);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    margin-top: 222px;
+    margin: 0;
+    transition-duration: 250ms;
+    transition-timing-function: var(--timing-function);
     
 }
 
@@ -282,6 +285,7 @@ header .container {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     margin: 0;
+    cursor: pointer;
 }
 
 .modal-close-button-part {
@@ -522,7 +526,7 @@ header .container {
         
     fill: var(--sixth-bg-color);
     
-    transition-property: background-color, color;
+    transition-property: background-color;
     transition-duration: 250ms;
     transition-timing-function: var(--timing-function);
 }
@@ -593,7 +597,7 @@ header .container {
     padding: 6px 22px;
     min-width: 103px;
     border: 0px solid transparent;
-    transition-property: background-color, color;
+    transition-property: background-color, color, box-shadow;
     transition-duration: 250ms;
     transition-timing-function: var(--timing-function);
 }
@@ -665,14 +669,14 @@ header .container {
 
 .work-list {
     width: calc((100% - 60px) / 3);
-    
+    position: relative;
 }
 
 .work .img-portfolio {
     display: block;
     border: 1px solid #EEEEEE;
     opacity: 1;
-    transition-property: opacity;
+    transition-property: opacity, box-shadow;
     transition-duration: 250ms;
     transition-timing-function: var(--timing-function);
     
@@ -705,7 +709,7 @@ header .container {
     height: 100%;
     margin: 0;
     opacity: 0;
-    transition-property: transform;
+    transition-property: transform, opacity;
     transition-duration: 250ms;
     transition-timing-function: var(--timing-function);
     transform: translateY(100%);
@@ -715,25 +719,22 @@ header .container {
 
 .img-portfolio:hover .information-part {
     transform: translateY(0);
+    opacity: 1;
 }
 
 .information-about {
-    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
     
+    padding: 63px 24px;
     font-weight: 400;
     font-size: 18px;
-    line-height: 28px;
+    line-height: 1.5;
     letter-spacing: 0.03em;
     
     color: var(--primary-bg-color);
-    padding: 63px 24px;
-    margin: 0;
-        
-}
-
-.information-part:hover {
-    opacity: 1;
-    transform: translateY(0);
+    
 }
 
 /* our-clients */
@@ -762,7 +763,7 @@ width: calc((100% - 30px) / 6);
     border-radius: 4px;
     fill: #AFB1B8;
 
-    transition-property: color;
+    transition-property: fill, border;
     transition-duration: 250ms;
     transition-timing-function: var(--timing-function);
 }
@@ -882,14 +883,14 @@ li .bottom-item:focus {
     align-items: center;
     justify-content: center;
 
-    background-color: rgba(100, 100, 100, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     width: 44px;
     height: 44px;
     
     fill: var(--primary-bg-color);
 
-    transition-property: background-color, color;
+    transition-property: background-color;
     transition-duration: 250ms;
     transition-timing-function: var(--timing-function);
 }
